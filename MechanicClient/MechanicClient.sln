@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicClient", "MechanicClient\MechanicClient.csproj", "{F440CD87-A6CF-4E98-B1B9-FDFC1B1F77FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F440CD87-A6CF-4E98-B1B9-FDFC1B1F77FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F440CD87-A6CF-4E98-B1B9-FDFC1B1F77FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F440CD87-A6CF-4E98-B1B9-FDFC1B1F77FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F440CD87-A6CF-4E98-B1B9-FDFC1B1F77FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1C18628-98D4-46E7-96CA-0B96D91AEFD4}
+	EndGlobalSection
+EndGlobal
