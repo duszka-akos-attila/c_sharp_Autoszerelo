@@ -10,14 +10,12 @@ namespace API.Repositories
 {
     public class JobContext : DbContext
     {
-        public JobContext()
-        {
-        }
-
-        public JobContext([NotNull] DbContextOptions options) : base(options)
-        {
-        }
-
         public DbSet<Job> Jobs { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                "Data Source=(localdb)\\mssqllocaldb;Database=ServerDb;Integrated Security=True;");
+        }
     }
 }

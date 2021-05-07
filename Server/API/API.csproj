@@ -5,13 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Controllers\**" />
       <Compile Remove="Repository\**" />
-      <Content Remove="Controllers\**" />
       <Content Remove="Repository\**" />
-      <EmbeddedResource Remove="Controllers\**" />
       <EmbeddedResource Remove="Repository\**" />
-      <None Remove="Controllers\**" />
       <None Remove="Repository\**" />
     </ItemGroup>
 
