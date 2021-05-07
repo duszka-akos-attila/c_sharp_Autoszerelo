@@ -18,5 +18,13 @@ namespace API.Controllers
             var jobs = JobRepository.GetJobs();
             return Ok(jobs);
         }
+
+        [HttpPost]
+        public ActionResult Post(Job job)
+        {
+            JobRepository.AddJob(job);
+
+            return Ok();
+        }
     }
 }

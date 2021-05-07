@@ -17,5 +17,15 @@ namespace API.Repositories
                 return jobs;
             }
         }
+
+        public static void AddJob(Job job)
+        {
+            using (var database = new JobContext())
+            {
+                database.Jobs.Add(job);
+
+                database.SaveChanges();
+            }
+        }
     }
 }
