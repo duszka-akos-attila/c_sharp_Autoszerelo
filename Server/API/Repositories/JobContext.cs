@@ -10,6 +10,10 @@ namespace API.Repositories
 {
     public class JobContext : DbContext
     {
+        public JobContext()
+        {
+        }
+
         public JobContext([NotNull] DbContextOptions options) : base(options)
         {
         }
