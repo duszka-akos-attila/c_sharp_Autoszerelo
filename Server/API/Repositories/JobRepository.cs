@@ -12,7 +12,7 @@ namespace API.Repositories
         {
             using (var database = new JobContext())
             {
-                var jobs = database.Jobs.ToList();
+                var jobs = database.Jobs.OrderByDescending(job => job.CreatedAt).ToList();
 
                 return jobs;
             }
