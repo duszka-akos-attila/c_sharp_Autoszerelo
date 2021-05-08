@@ -27,5 +27,20 @@ namespace API.Repositories
                 database.SaveChanges();
             }
         }
+
+        public static void UpdateJobState(long id, String state)
+        {
+            using (var database = new JobContext())
+            {
+                var job = database.Jobs.FirstOrDefault(job => job.Id == id);
+
+                if (job != null)
+                {
+                    job.State = state;
+                    database.Jobs.Update(job);
+                    database.SaveChanges();
+                }
+            }
+        }
     }
 }

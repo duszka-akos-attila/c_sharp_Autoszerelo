@@ -27,5 +27,13 @@ namespace API.Controllers
             return Ok();
         }
 
+        [HttpPut("{id}")]
+        public ActionResult Update(long id, String state)
+        {
+            JobRepository.UpdateJobState(id, state);
+
+            return Ok();
+        }
+
     }
 }
