@@ -16,6 +16,8 @@ namespace API.Models
         [MaxLength(6)]
         public String LicensePlate { get; set; }
         public String Description { get; set; }
+        public String State { get; set; } = "Felvett munka.";
+        public DateTime CraetedAt { get; set; } = DateTime.Now;
 
     }
 }
