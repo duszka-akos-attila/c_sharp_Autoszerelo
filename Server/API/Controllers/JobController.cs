@@ -27,7 +27,7 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("state/{id}")]
         public ActionResult Update(long id, String state)
         {
             try
@@ -40,6 +40,21 @@ namespace API.Controllers
                 return NotFound(e.Message);
             }
            
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetById(long id)
+        {
+            try
+            {
+                Job job = JobRepository.GetJob(id);
+
+                return Ok(job);
+            }
+            catch (JobNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
 
         }
 

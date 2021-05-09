@@ -43,5 +43,20 @@ namespace API.Repositories
                 database.SaveChanges();
             }
         }
+
+        public static Job GetJob(long id)
+        {
+            using (var database = new JobContext())
+            {
+                var job = database.Jobs.FirstOrDefault(job => job.Id == id);
+
+                if (job == null)
+                {
+                    throw new JobNotFoundException($"Job with id:{id} not found.");
+                }
+
+                return job;
+            }
+        }
     }
 }
