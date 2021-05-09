@@ -30,9 +30,17 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public ActionResult Update(long id, String state)
         {
-            JobRepository.UpdateJobState(id, state);
+            try
+            {
+                JobRepository.UpdateJobState(id, state);
 
-            return Ok();
+                return Ok();
+            } catch (JobNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+           
+
         }
 
     }

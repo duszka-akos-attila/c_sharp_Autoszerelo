@@ -34,12 +34,13 @@ namespace API.Repositories
             {
                 var job = database.Jobs.FirstOrDefault(job => job.Id == id);
 
-                if (job != null)
+                if (job == null)
                 {
-                    job.State = state;
-                    database.Jobs.Update(job);
-                    database.SaveChanges();
+                    throw new JobNotFoundException($"Job with id:{id} not found.");
                 }
+                job.State = state;
+                database.Jobs.Update(job);
+                database.SaveChanges();
             }
         }
     }
