@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.Dto;
+using API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,28 @@ namespace API.Repositories
                 }
 
                 return job;
+            }
+        }
+
+        public static void UpdateJob(long id, JobUpdateDto job)
+        {
+            using (var database = new JobContext())
+            {
+                var jobToUpdate = database.Jobs.FirstOrDefault(job => job.Id == id);
+
+                if (job == null)
+                {
+                    throw new JobNotFoundException($"Job with id:{id} not found.");
+                }
+
+                jobToUpdate.LastName = job.LastName;
+                jobToUpdate.FirstName = job.FirstName;
+                jobToUpdate.CarModel = job.CarModel;
+                jobToUpdate.LicensePlate = job.LicensePlate;
+                jobToUpdate.Description = job.Description;
+
+                database.Jobs.Update(jobToUpdate);
+                database.SaveChanges();
             }
         }
     }

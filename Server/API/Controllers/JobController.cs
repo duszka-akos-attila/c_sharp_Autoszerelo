@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.Dto;
+using API.Models;
 using API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -50,6 +51,22 @@ namespace API.Controllers
                 Job job = JobRepository.GetJob(id);
 
                 return Ok(job);
+            }
+            catch (JobNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Update(long id, JobUpdateDto jobUpdateDto)
+        {
+            try
+            {
+                JobRepository.UpdateJob(id, jobUpdateDto);
+
+                return Ok();
             }
             catch (JobNotFoundException e)
             {
