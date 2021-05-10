@@ -8,6 +8,15 @@ namespace API.Models
 {
     public class Job
     {
+        public Job(String FirstName, String LastName, String CarModel, String LicensePlate, String Description)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.CarModel = CarModel;
+            this.LicensePlate = LicensePlate;
+            this.Description = Description;
+        }
+
         [Key]
         public long Id { get; set; }
         [Required]

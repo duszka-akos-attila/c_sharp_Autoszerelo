@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Dto
 {
-    public class JobUpdateDto
+    public class JobDto
     {
         public String FirstName { get; set; }
         public String LastName { get; set; }

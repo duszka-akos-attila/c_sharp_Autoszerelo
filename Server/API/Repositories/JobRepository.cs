@@ -19,10 +19,12 @@ namespace API.Repositories
             }
         }
 
-        public static void AddJob(Job job)
+        public static void AddJob(JobDto jobDto)
         {
             using (var database = new JobContext())
             {
+                Job job = new Job(jobDto.FirstName, jobDto.LastName, jobDto.CarModel, jobDto.LicensePlate, jobDto.Description);
+
                 database.Jobs.Add(job);
 
                 database.SaveChanges();
@@ -60,7 +62,7 @@ namespace API.Repositories
             }
         }
 
-        public static void UpdateJob(long id, JobUpdateDto job)
+        public static void UpdateJob(long id, JobDto job)
         {
             using (var database = new JobContext())
             {

@@ -21,9 +21,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post(Job job)
+        public ActionResult Post(JobDto jobDto)
         {
-            JobRepository.AddJob(job);
+            JobRepository.AddJob(jobDto);
 
             return Ok();
         }
@@ -60,11 +60,11 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Update(long id, JobUpdateDto jobUpdateDto)
+        public ActionResult Update(long id, JobDto jobDto)
         {
             try
             {
-                JobRepository.UpdateJob(id, jobUpdateDto);
+                JobRepository.UpdateJob(id, jobDto);
 
                 return Ok();
             }
