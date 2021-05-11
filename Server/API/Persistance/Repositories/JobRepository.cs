@@ -9,7 +9,7 @@ namespace API.Repositories
 {
     public class JobRepository
     {
-        public static IList<Job> GetJobs()
+        public static IList<Job> GetAll()
         {
             using (var database = new JobContext())
             {
@@ -28,55 +28,21 @@ namespace API.Repositories
             }
         }
 
-        public static void UpdateJobState(long id, String state)
+        public static Job GetById(long id)
         {
             using (var database = new JobContext())
             {
                 var job = database.Jobs.FirstOrDefault(job => job.Id == id);
-
-                if (job == null)
-                {
-                    throw new JobNotFoundException($"Job with id:{id} not found.");
-                }
-                job.State = state;
-                database.Jobs.Update(job);
-                database.SaveChanges();
-            }
-        }
-
-        public static Job GetJob(long id)
-        {
-            using (var database = new JobContext())
-            {
-                var job = database.Jobs.FirstOrDefault(job => job.Id == id);
-
-                if (job == null)
-                {
-                    throw new JobNotFoundException($"Job with id:{id} not found.");
-                }
 
                 return job;
             }
         }
 
-        public static void UpdateJob(long id, JobDto job)
+        public static void Update(Job job)
         {
             using (var database = new JobContext())
             {
-                var jobToUpdate = database.Jobs.FirstOrDefault(job => job.Id == id);
-
-                if (job == null)
-                {
-                    throw new JobNotFoundException($"Job with id:{id} not found.");
-                }
-
-                jobToUpdate.LastName = job.LastName;
-                jobToUpdate.FirstName = job.FirstName;
-                jobToUpdate.CarModel = job.CarModel;
-                jobToUpdate.LicensePlate = job.LicensePlate;
-                jobToUpdate.Description = job.Description;
-
-                database.Jobs.Update(jobToUpdate);
+                database.Jobs.Update(job);
                 database.SaveChanges();
             }
         }
