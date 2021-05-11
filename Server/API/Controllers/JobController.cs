@@ -1,6 +1,7 @@
 ﻿using API.Dto;
 using API.Models;
 using API.Repositories;
+using API.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,15 @@ namespace API.Controllers
 {
     [Route("/api/job")]
     [ApiController]
-    public class JobController : ControllerBase
+    public class JobController : Controller
     {
+        private readonly IJobService _jobService;
+
+        public JobController(IJobService jobService)
+        {
+            _jobService = jobService;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<Job>> Get()
         {
@@ -23,7 +31,7 @@ namespace API.Controllers
         [HttpPost]
         public ActionResult Post(JobDto jobDto)
         {
-            JobRepository.AddJob(jobDto);
+            _jobService.AddJob(jobDto);
 
             return Ok();
         }
@@ -38,6 +46,7 @@ namespace API.Controllers
                 return Ok();
             } catch (JobNotFoundException e)
             {
+
                 return NotFound(e.Message);
             }
            
