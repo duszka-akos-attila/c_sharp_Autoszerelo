@@ -37,13 +37,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        /*
+        
         [HttpPut("state/{id}")]
         public ActionResult Update(long id, String state)
         {
             try
             {
-                JobRepository.UpdateJobState(id, state);
+                _jobService.UpdateJobState(id, state);
 
                 return Ok();
             } catch (JobNotFoundException e)
@@ -53,13 +53,14 @@ namespace API.Controllers
             }
            
         }
+        
 
         [HttpGet("{id}")]
         public ActionResult GetById(long id)
         {
             try
             {
-                Job job = JobRepository.GetJob(id);
+                JobListDto job = _jobService.GetJobById(id);
 
                 return Ok(job);
             }
@@ -70,12 +71,13 @@ namespace API.Controllers
 
         }
 
+        
         [HttpPut("{id}")]
         public ActionResult Update(long id, JobDto jobDto)
         {
             try
             {
-                JobRepository.UpdateJob(id, jobDto);
+                _jobService.UpdateJob(id, jobDto);
 
                 return Ok();
             }
@@ -85,6 +87,6 @@ namespace API.Controllers
             }
 
         }
-        */
+        
     }
 }

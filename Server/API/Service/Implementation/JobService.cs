@@ -18,6 +18,19 @@ namespace API.Service.Implementation
             JobRepository.Create(job);
         }
 
+        public JobListDto GetJobById(long id)
+        {
+            Job job = JobRepository.GetById(id);
+
+            if (job == null)
+            {
+                throw new JobNotFoundException($"Job with id:{id} doesn't exist.");
+            }
+
+            return ConvertModelToDto(job);
+
+        }
+
         public List<JobListDto> GetJobs()
         {
             List<Job> jobs = JobRepository.GetAll().ToList();
@@ -25,6 +38,38 @@ namespace API.Service.Implementation
             List<JobListDto> jobListDtos = jobs.ConvertAll(jobs => ConvertModelToDto(jobs));
 
             return jobListDtos;
+        }
+
+        public void UpdateJob(long id, JobDto jobDto)
+        {
+            Job job = JobRepository.GetById(id);
+
+            if (job == null)
+            {
+                throw new JobNotFoundException($"Job with id:{id} doesn't exist.");
+            }
+
+            job.FirstName = jobDto.FirstName;
+            job.LastName = jobDto.LastName;
+            job.CarModel = jobDto.CarModel;
+            job.LicensePlate = jobDto.LicensePlate;
+            job.Description = jobDto.Description;
+
+            JobRepository.Update(job);
+
+        }
+
+        public void UpdateJobState(long id, string state)
+        {
+            Job job = JobRepository.GetById(id);
+
+            if (job == null)
+            {
+                throw new JobNotFoundException($"Job with id:{id} doesn't exist.");
+            }
+
+            job.State = state;
+            JobRepository.Update(job);
         }
 
         private JobListDto ConvertModelToDto(Job job)
@@ -40,6 +85,7 @@ namespace API.Service.Implementation
             jobListDto.CreatedAt = job.CreatedAt;
 
             return jobListDto;
-        }
+        }     
+
     }
 }

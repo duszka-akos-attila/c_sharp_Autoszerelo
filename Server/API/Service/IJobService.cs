@@ -11,5 +11,8 @@ namespace API.Service
     {
         public void AddJob(JobDto jobDto);
         public List<JobListDto> GetJobs();
+        public JobListDto GetJobById(long id);
+        public void UpdateJobState(long id, String state);
+        public void UpdateJob(long id, JobDto job);
     }
 }

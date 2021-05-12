@@ -8,6 +8,10 @@ namespace API.Models
 {
     public class Job
     {
+        public Job()
+        {
+        }
+
         public Job(String FirstName, String LastName, String CarModel, String LicensePlate, String Description)
         {
             this.FirstName = FirstName;
