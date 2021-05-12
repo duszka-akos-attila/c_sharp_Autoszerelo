@@ -2,6 +2,7 @@
 using API.Models;
 using API.Repositories;
 using API.Service;
+using API.Service.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Job>> Get()
+        public ActionResult<IEnumerable<JobListDto>> Get()
         {
-            var jobs = JobRepository.GetJobs();
+            var jobs = _jobService.GetJobs();
             return Ok(jobs);
         }
 
@@ -36,6 +37,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        /*
         [HttpPut("state/{id}")]
         public ActionResult Update(long id, String state)
         {
@@ -83,6 +85,6 @@ namespace API.Controllers
             }
 
         }
-
+        */
     }
 }

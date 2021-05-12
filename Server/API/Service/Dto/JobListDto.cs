@@ -7,6 +7,11 @@ namespace API.Service.Dto
 {
     public class JobListDto
     {   
+        public JobListDto()
+        {
+
+        }
+
         public long Id { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
