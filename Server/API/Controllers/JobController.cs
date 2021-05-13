@@ -56,7 +56,7 @@ namespace API.Controllers
         
 
         [HttpGet("{id}")]
-        public ActionResult GetById(long id)
+        public ActionResult<JobListDto> GetById(long id)
         {
             try
             {
