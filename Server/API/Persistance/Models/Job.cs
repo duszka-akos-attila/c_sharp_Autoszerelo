@@ -21,6 +21,19 @@ namespace API.Models
             this.Description = Description;
         }
 
+       public Job(long Id, String FirstName, String LastName, String CarModel, String LicensePlate,
+       String Description, String State, DateTime CreatedAt)
+        {
+            this.Id = Id;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.CarModel = CarModel;
+            this.LicensePlate = LicensePlate;
+            this.Description = Description;
+            this.State = State;
+            this.CreatedAt = CreatedAt;
+        }
+
         [Key]
         public long Id { get; set; }
         [Required]
