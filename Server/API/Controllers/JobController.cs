@@ -1,6 +1,8 @@
 ﻿using API.Dto;
 using API.Models;
 using API.Repositories;
+using API.Service;
+using API.Service.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,44 +13,54 @@ namespace API.Controllers
 {
     [Route("/api/job")]
     [ApiController]
-    public class JobController : ControllerBase
+    public class JobController : Controller
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<Job>> Get()
+        private readonly IJobService _jobService;
+
+        public JobController(IJobService jobService)
         {
-            var jobs = JobRepository.GetJobs();
+            _jobService = jobService;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<JobListDto>> Get()
+        {
+            var jobs = _jobService.GetJobs();
             return Ok(jobs);
         }
 
         [HttpPost]
-        public ActionResult Post(Job job)
+        public ActionResult Post(JobDto jobDto)
         {
-            JobRepository.AddJob(job);
+            _jobService.AddJob(jobDto);
 
             return Ok();
         }
 
+        
         [HttpPut("state/{id}")]
         public ActionResult Update(long id, String state)
         {
             try
             {
-                JobRepository.UpdateJobState(id, state);
+                _jobService.UpdateJobState(id, state);
 
                 return Ok();
             } catch (JobNotFoundException e)
             {
+
                 return NotFound(e.Message);
             }
            
         }
+        
 
         [HttpGet("{id}")]
         public ActionResult GetById(long id)
         {
             try
             {
-                Job job = JobRepository.GetJob(id);
+                JobListDto job = _jobService.GetJobById(id);
 
                 return Ok(job);
             }
@@ -59,12 +71,13 @@ namespace API.Controllers
 
         }
 
+        
         [HttpPut("{id}")]
-        public ActionResult Update(long id, JobUpdateDto jobUpdateDto)
+        public ActionResult Update(long id, JobDto jobDto)
         {
             try
             {
-                JobRepository.UpdateJob(id, jobUpdateDto);
+                _jobService.UpdateJob(id, jobDto);
 
                 return Ok();
             }
@@ -74,6 +87,6 @@ namespace API.Controllers
             }
 
         }
-
+        
     }
 }
