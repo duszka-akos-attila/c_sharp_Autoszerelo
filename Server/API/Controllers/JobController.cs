@@ -39,7 +39,7 @@ namespace API.Controllers
 
         
         [HttpPut("state/{id}")]
-        public ActionResult Update(long id, String state)
+        public ActionResult UpdateState(long id, String state)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace API.Controllers
         
 
         [HttpGet("{id}")]
-        public ActionResult GetById(long id)
+        public ActionResult<JobListDto> GetById(long id)
         {
             try
             {

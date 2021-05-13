@@ -12,6 +12,19 @@ namespace API.Service.Dto
 
         }
 
+        public JobListDto(long Id, String FirstName, String LastName, String CarModel, String LicensePlate,
+            String Description, String State, DateTime CreatedAt)
+        {
+            this.Id = Id;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.CarModel = CarModel;
+            this.LicensePlate = LicensePlate;
+            this.Description = Description;
+            this.State = State;
+            this.CreatedAt = CreatedAt;
+        }
+
         public long Id { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
