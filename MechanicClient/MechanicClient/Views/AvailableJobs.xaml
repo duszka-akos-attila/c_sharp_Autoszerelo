@@ -1,0 +1,54 @@
+﻿<Page x:Class="MechanicClient.Views.AvailableJobs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MechanicClient.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AvailableJobs">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <ListView>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Customer Name"></GridViewColumn>
+                    <GridViewColumn Header="Car Model"></GridViewColumn>
+                    <GridViewColumn Header="License Plate"></GridViewColumn>
+                    <GridViewColumn Header="Description" Width="300"></GridViewColumn>
+                    <GridViewColumn Header="Registered"></GridViewColumn>
+                    <GridViewColumn Header="Status"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Details">
+                        <MenuItem.Icon>
+                            <Image Source="/MechanicClient;component/Imgaes/Deatils.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Set Status">
+                        <MenuItem.Icon>
+                            <Image Source="/MechanicClient;component/Imgaes/Status.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="Registered">
+                            <MenuItem.Icon>
+                                <Image Source="/MechanicClient;component/Imgaes/Registered.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Under repair">
+                            <MenuItem.Icon>
+                                <Image Source="/MechanicClient;component/Imgaes/Repair.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Repaired">
+                            <MenuItem.Icon>
+                                <Image Source="/MechanicClient;component/Imgaes/Repaired.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</Page>
