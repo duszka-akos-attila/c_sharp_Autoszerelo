@@ -18,7 +18,7 @@ namespace MechanicClient.Views
     /// <summary>
     /// Interaction logic for Job.xaml
     /// </summary>
-    public partial class Job : Page
+    public partial class Job : UserControl
     {
         public Job()
         {

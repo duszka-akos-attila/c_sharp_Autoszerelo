@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MechanicClient.Models
 {
-    class Job
+    public class Job : INotifyPropertyChanged
     {
-        private int Id { get; set; }
+        public int Id { get; set; }
 
-        private string ClientName { get; set; }
+        public string ClientName { get; set; }
 
-        private string CarModel { get; set; }
+        public string CarModel { get; set; }
 
-        private string LicensePlate { get; set; }
+        public string LicensePlate { get; set; }
 
-        private DateTime RegistrationDate { get; set; } 
+        public DateTime RegistrationDate { get; set; } 
 
-        private int Status { get; set; }
+        public string Status { get; set; }
 
-        private string Description { get; set; }
+        public string Description { get; set; }
 
-        public Job(int id, string clientName, string carModel, string licensePlate, DateTime registrationDate, int status, string description)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Job(int id, string clientName, string carModel, string licensePlate, DateTime registrationDate, string status, string description)
         {
             Id = id;
             ClientName = clientName;
@@ -35,6 +38,24 @@ namespace MechanicClient.Models
 
         public Job()
         {
+
+        }
+
+        public void PropertyHasChanged()
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs("Status"));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Job job &&
+                   Id == job.Id &&
+                   ClientName == job.ClientName &&
+                   CarModel == job.CarModel &&
+                   LicensePlate == job.LicensePlate &&
+                   RegistrationDate == job.RegistrationDate &&
+                   Status == job.Status &&
+                   Description == job.Description;
         }
     }
 }
