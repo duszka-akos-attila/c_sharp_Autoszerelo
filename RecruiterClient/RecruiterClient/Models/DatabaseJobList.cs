@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,19 @@ namespace RecruiterClient.Models
 {
     class DatabaseJobList
     {
+        [JsonConstructor]
+        public DatabaseJobList(long id, string firstName, string lastName, string carModel, string licensePlate, string description, string state, DateTime createdAt)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            CarModel = carModel;
+            LicensePlate = licensePlate;
+            Description = description;
+            State = state;
+            CreatedAt = createdAt;
+        }
+
         public long Id { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }

@@ -13,7 +13,7 @@ namespace RecruiterClient.DataProviders
     {
         private const string _url = "http://localhost:5000/api/job";
 
-        public static IEnumerable<DatabaseJobList> GetJobs()
+        public static IEnumerable<Job> GetJobs()
         {
             using(var client = new HttpClient())
             {
@@ -22,7 +22,13 @@ namespace RecruiterClient.DataProviders
                 if(response.IsSuccessStatusCode)
                 {
                     var rawData = response.Content.ReadAsStringAsync().Result;
-                    var jobs = JsonConvert.DeserializeObject<IEnumerable<DatabaseJobList>>(rawData);
+                    var jobsFromDatabase = JsonConvert.DeserializeObject<IEnumerable<DatabaseJobList>>(rawData);
+                    List<Job> jobs = new List<Job>();
+
+                    foreach(DatabaseJobList databaseJob in jobsFromDatabase)
+                    {
+                        jobs.Add(new Job(databaseJob));
+                    }
 
                     return jobs;
                 }
@@ -30,11 +36,11 @@ namespace RecruiterClient.DataProviders
             }
         }
 
-        public static void CreateJob(DatabaseJob job)
+        public static void CreateJob(Job job)
         {
             using(var client = new HttpClient())
             {
-                var rawData = JsonConvert.SerializeObject(job);
+                var rawData = JsonConvert.SerializeObject(new DatabaseJob(job));
                 var content = new StringContent(rawData, Encoding.UTF8, "application/json");
 
                 var response = client.PostAsync(_url, content).Result;
@@ -45,11 +51,11 @@ namespace RecruiterClient.DataProviders
             }
         }
 
-        public static void UpdateJob(long id, DatabaseJob job)
+        public static void UpdateJob(long id, Job job)
         {
             using(var client = new HttpClient())
             {
-                var rawData = JsonConvert.SerializeObject(job);
+                var rawData = JsonConvert.SerializeObject(new DatabaseJob(job));
                 var content = new StringContent(rawData, Encoding.UTF8, "application/json");
 
                 var response = client.PutAsync($"{_url}/{id}", content).Result;
