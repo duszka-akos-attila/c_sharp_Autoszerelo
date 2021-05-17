@@ -1,4 +1,5 @@
 ﻿using MechanicClient.Commands;
+using MechanicClient.DataProviders;
 using MechanicClient.Models;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,14 @@ namespace MechanicClient.ViewModels
         }
         public AvailableJobsViewModel(MainViewModel mainViewModel)
         {
+            Jobs = new ObservableCollection<Job>(JobDataProvider.GetJobs());
+            /*
             Jobs = new ObservableCollection<Job>();
             Jobs.Add(new Job(0, "Barbara", "Tesla", "L-00537", DateTime.Now, "Registered", "Battery died aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
             Jobs.Add(new Job(0, "Alice", "Tesla", "L-00537", DateTime.Now.AddDays(1), "Registered", "Battery died "));
             Jobs.Add(new Job(0, "Clementine", "Tesla", "L-00537", DateTime.Now.AddDays(2), "Registered", "Battery died "));
             Jobs.Add(new Job(0, "Dorothy", "Tesla", "L-00537", DateTime.Now.AddDays(3), "Registered", "Battery died "));
+            */
             this.UpdateJobStatusCommand = new UpdateJobStatusCommand(this);
             this.UpdateViewCommand = new UpdateViewCommand(mainViewModel, this);
             this.SortItemsCommand = new SortItemsCommand(this);

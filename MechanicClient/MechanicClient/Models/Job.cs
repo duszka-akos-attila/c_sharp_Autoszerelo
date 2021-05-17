@@ -41,6 +41,17 @@ namespace MechanicClient.Models
 
         }
 
+        public Job(DatabaseJob databaseJob)
+        {
+            this.Id = databaseJob.Id;
+            this.CarModel = databaseJob.CarModel;
+            this.LicensePlate = databaseJob.LicensePlate;
+            this.Description = databaseJob.Description;
+            this.RegistrationDate = databaseJob.CreatedAt;
+            this.Status = databaseJob.State;
+            this.ClientName = databaseJob.FirstName + " " + databaseJob.LastName;
+        }
+
         public void PropertyHasChanged()
         {
             PropertyChanged(this, new PropertyChangedEventArgs("Status"));

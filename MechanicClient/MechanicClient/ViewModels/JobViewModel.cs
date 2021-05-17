@@ -1,4 +1,5 @@
 ﻿using MechanicClient.Commands;
+using MechanicClient.DataProviders;
 using MechanicClient.Models;
 using System;
 using System.Collections.Generic;
@@ -84,14 +85,20 @@ namespace MechanicClient.ViewModels
             if (StatusSelected == 0)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Registered");
+                JobDataProvider.UpdateState(Job.Id, "Registered");
+
             }
             else if (StatusSelected == 1)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Under Repair");
+                JobDataProvider.UpdateState(Job.Id, "Under Repair");
+
             }
             else if (StatusSelected == 2)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Repaired");
+                JobDataProvider.UpdateState(Job.Id, "Repaired");
+
             }
         }
         public bool DisplayConfirmActionMessageBox(string question, string caption)
