@@ -1,5 +1,4 @@
-﻿using RecruiterClient.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RecruiterClient
+namespace RecruiterClient.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for RegisteredJobs.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegisteredJobs : UserControl
     {
-        public MainWindow()
+        public RegisteredJobs()
         {
             InitializeComponent();
-
-            DataContext = new MainViewModel();
         }
     }
 }
