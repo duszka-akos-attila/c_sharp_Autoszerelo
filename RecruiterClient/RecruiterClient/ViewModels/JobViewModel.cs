@@ -134,7 +134,7 @@ namespace RecruiterClient.ViewModels
 
         public bool ValidateClientName(string name)
         {
-            if(Regex.Match(name, @"^\w{3,10} \w{3,10}  \w{0,10}$", RegexOptions.IgnoreCase).Success)
+            if(Regex.Match(name, @"^\w{3,10} \w{3,10} \w{0,10}$", RegexOptions.IgnoreCase).Success)
             {
                 return true;
             }
