@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecruiterClient.Models
 {
-    class Job
+    public class Job
     {
         public int Id { get; set; }
 
@@ -31,6 +31,22 @@ namespace RecruiterClient.Models
             this.RegistrationDate = databaseJob.CreatedAt;
             this.Status = databaseJob.State;
             this.ClientName = databaseJob.FirstName + " " + databaseJob.LastName;
+        }
+
+        public Job(int id, string clientName, string carModel, string licensePlate, DateTime registrationDate, string status, string description)
+        {
+            Id = id;
+            ClientName = clientName;
+            CarModel = carModel;
+            LicensePlate = licensePlate;
+            RegistrationDate = registrationDate;
+            Status = status;
+            Description = description;
+        }
+
+        public Job()
+        {
+
         }
     }
 }

@@ -20,7 +20,7 @@
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-                <Button Command="{Binding UpdateViewCommand}" CommandParameter="RecordedJobsNew" Height="40" Width="100" HorizontalAlignment="Right" Margin="10,10,60,10" BorderThickness="0" Background="#FF228888" BorderBrush="{x:Null}">
+                <Button Command="{Binding UpdateViewCommand}" CommandParameter="RegisteredJobNew" Height="40" Width="100" HorizontalAlignment="Right" Margin="10,10,60,10" BorderThickness="0" Background="#FF228888" BorderBrush="{x:Null}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -51,18 +51,18 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="Operations">
-                            <MenuItem Header="Edit" Command="{Binding UpdateViewCommand}" CommandParameter="Edit">
+                            <MenuItem Header="Edit" Command="{Binding EditJobCommand}" CommandParameter="Edit">
                                 <MenuItem.Icon>
                                     <Image Source="/RecruiterClient;component/Images/Edit.png"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="Delete" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Under Repair">
+                            <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
                                 <MenuItem.Icon>
                                     <Image Source="/RecruiterClient;component/Images/Delete.png"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem Header="Refresh" Command="{Binding UpdateViewCommand}" CommandParameter="AvailableJobsNew">
+                        <MenuItem Header="Refresh" Command="{Binding UpdateViewCommand}" CommandParameter="RegisteredJobsNew">
                             <MenuItem.Icon>
                                 <Image Source="/RecruiterClient;component/Images/Refresh.png"/>
                             </MenuItem.Icon>

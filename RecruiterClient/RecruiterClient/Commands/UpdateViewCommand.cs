@@ -14,16 +14,25 @@ namespace RecruiterClient.Commands
 
         private MainViewModel mainViewModel;
 
-        private RecordedJobsViewModel recordedJobsViewModel;
+        private RegisteredJobsViewModel registeredJobsViewModel;
+
+        private JobViewModel jobViewModel;
 
         public UpdateViewCommand(MainViewModel mainViewModel)
         {
             this.mainViewModel = mainViewModel;
         }
-        public UpdateViewCommand(MainViewModel mainViewModel, RecordedJobsViewModel recordedJobsViewModel)
+        public UpdateViewCommand(MainViewModel mainViewModel, RegisteredJobsViewModel registeredJobsViewModel)
         {
             this.mainViewModel = mainViewModel;
-            this.recordedJobsViewModel = recordedJobsViewModel;
+            this.registeredJobsViewModel = registeredJobsViewModel;
+        }
+
+        public UpdateViewCommand(MainViewModel mainViewModel, RegisteredJobsViewModel registeredJobsViewModel, JobViewModel jobViewModel)
+        {
+            this.mainViewModel = mainViewModel;
+            this.registeredJobsViewModel = registeredJobsViewModel;
+            this.jobViewModel = jobViewModel;
         }
 
         public bool CanExecute(object parameter)
@@ -33,27 +42,39 @@ namespace RecruiterClient.Commands
 
         public void Execute(object parameter)
         {
-            if (parameter.ToString() == "RecordedJobs")
+            if (parameter.ToString() == "RegisteredJobs")
             {
-                if (recordedJobsViewModel == null)
+                if (registeredJobsViewModel == null)
                 {
-                    mainViewModel.SelectedViewModel = new RecordedJobsViewModel(mainViewModel);
+                    mainViewModel.SelectedViewModel = new RegisteredJobsViewModel(mainViewModel);
                 }
                 else
                 {
-                    mainViewModel.SelectedViewModel = recordedJobsViewModel;
+                    mainViewModel.SelectedViewModel = registeredJobsViewModel;
                 }
             }
-            else if (parameter.ToString() == "RecordedJobsNew")
+            else if (parameter.ToString() == "RegisteredJobsNew")
             {
-                mainViewModel.SelectedViewModel = new RecordedJobsViewModel(mainViewModel);
+                mainViewModel.SelectedViewModel = new RegisteredJobsViewModel(mainViewModel);
             }
             else if (parameter.ToString() == "Job")
             {
-                if (/*recordedJobsViewModel.GetSelectedJob() != null*/ true)
+                if (registeredJobsViewModel.GetSelectedJob() != null && jobViewModel == null)
                 {
-                    mainViewModel.SelectedViewModel = new JobViewModel(mainViewModel, recordedJobsViewModel);
+                    mainViewModel.SelectedViewModel = new JobViewModel(mainViewModel, registeredJobsViewModel);
                 }
+                else if (registeredJobsViewModel.GetSelectedJob() != null && jobViewModel != null)
+                {
+                    mainViewModel.SelectedViewModel = jobViewModel;
+                }
+            }
+            else if (parameter.ToString() == "Add")
+            {
+                mainViewModel.SelectedViewModel = new AddViewModel(mainViewModel);
+            }
+            else if (parameter.ToString() == "Main")
+            {
+                mainViewModel.SelectedViewModel = mainViewModel;
             }
         }
     }

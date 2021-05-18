@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="RecruiterClient.Views.Add"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RecruiterClient.Views"
+             mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="100,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="#FF228888" BorderThickness="0,0,0,2">
+                <Grid>
+                    <Label Content="Job Details" FontSize="20" FontWeight="Bold" Foreground="#FF228888" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <ScrollViewer Grid.Row="2" Margin="0,30,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="65*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Name:" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="#FF228888"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Car Model:" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="#FF228888"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="License Plate:" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="#FF228888"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Description of the problem:" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="#FF228888"/>
+
+
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Job.ClientName, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Job.CarModel, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Job.LicensePlate, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    
+                    <ScrollViewer Grid.Row="3" Grid.Column="1" Margin="20,0,50,0" HorizontalAlignment="Left" MinWidth="300" MaxWidth="500">
+                        <TextBox Text="{Binding Job.Description, Mode=TwoWay}" FontSize="14" Foreground="Black" HorizontalAlignment="Stretch" Padding="5" TextWrapping="Wrap" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    </ScrollViewer>
+                </Grid>
+            </ScrollViewer>
+            <Grid Grid.Row="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Save Change(s)" Command="{Binding AddCommand}" CommandParameter="SaveChanges" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}" Height="30" Padding="10,0" HorizontalAlignment="Right" VerticalAlignment="Center" BorderBrush="#FF228855" Background="{x:Null}" Foreground="#FF228855"/>
+                    <Button Grid.Column="1" Content="Discard Change(s)" Command="{Binding AddCommand}" CommandParameter="DiscardChanges" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}" Height="30" Padding="10,0" Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#FF882222" Background="{x:Null}" Foreground="#FF882222"/>
+                    <Button Grid.Column="2" Content="Cancel" Command="{Binding AddCommand}" CommandParameter="Cancel" Height="30" Padding="10,0" HorizontalAlignment="Left" VerticalAlignment="Center" IsCancel="True" BorderBrush="#FF228888" Background="{x:Null}" Foreground="#FF228888"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

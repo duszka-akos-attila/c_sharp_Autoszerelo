@@ -29,7 +29,8 @@
             </Grid>
 
             <StackPanel Grid.Row="1" Margin="0,50,0,0">
-                <Button Content="Recorded Jobs" Command="{Binding UpdateViewCommand}" CommandParameter="RecordedJobs" Height="35" Margin="10" Background="White" Foreground="#FF228888" FontSize="15" BorderBrush="{x:Null}"/>
+                <Button Content="Register new job" Command="{Binding UpdateViewCommand}" CommandParameter="Add" Height="35" Margin="10" Background="White" Foreground="#FF228888" FontSize="15" BorderBrush="{x:Null}"/>
+                <Button Content="Registered Jobs" Command="{Binding UpdateViewCommand}" CommandParameter="RegisteredJobs" Height="35" Margin="10" Background="White" Foreground="#FF228888" FontSize="15" BorderBrush="{x:Null}"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1" Background="White">

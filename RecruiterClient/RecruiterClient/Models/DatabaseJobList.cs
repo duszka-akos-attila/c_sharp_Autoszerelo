@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecruiterClient.Models
 {
-    class DatabaseJobList
+    public class DatabaseJobList
     {
         [JsonConstructor]
         public DatabaseJobList(long id, string firstName, string lastName, string carModel, string licensePlate, string description, string state, DateTime createdAt)

@@ -55,11 +55,11 @@
                     <Label Grid.Row="5" Grid.Column="0" Content="Description of the problem:" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="#FF228888"/>
 
 
-                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Job.ClientName, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Job.CarModel, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Job.LicensePlate, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Job.RegistrationDate, Mode=TwoWay, StringFormat='yyyy.MM.dd, HH:mm'}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5" IsEnabled="False"/>
-                    <ComboBox Grid.Row="4" Grid.Column="1" FontSize="14" HorizontalAlignment="Left" Margin="20,0,0,0" Width="130" Height="40" VerticalContentAlignment="Center" IsEnabled="False" SelectedIndex="{Binding }" IsReadOnly="true">
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Job.ClientName, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Job.CarModel, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Job.LicensePlate, Mode=TwoWay}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Job.RegistrationDate, StringFormat='yyyy.MM.dd, HH:mm'}" Width="200" Height="25" FontSize="14" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,5" Padding="5,1,0,0" IsEnabled="False"/>
+                    <ComboBox Grid.Row="4" Grid.Column="1" FontSize="14" HorizontalAlignment="Left" Margin="20,0,0,0" Width="130" Height="40" VerticalContentAlignment="Center" IsEnabled="False" SelectedIndex="{Binding StatusSelected}" IsReadOnly="true">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -88,7 +88,7 @@
                         </ComboBoxItem>
                     </ComboBox>
                     <ScrollViewer Grid.Row="5" Grid.Column="1" Margin="20,0,50,0" HorizontalAlignment="Left" MinWidth="300" MaxWidth="500">
-                        <TextBox Text="{Binding Job.Description, Mode=TwoWay}" FontSize="14" Foreground="Black" HorizontalAlignment="Stretch" Padding="5" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding Job.Description, Mode=TwoWay}" FontSize="14" Foreground="Black" HorizontalAlignment="Stretch" Padding="5" TextWrapping="Wrap" IsEnabled="{Binding JobEditModeGui.EditModeEnabled}"/>
                     </ScrollViewer>
                 </Grid>
             </ScrollViewer>
