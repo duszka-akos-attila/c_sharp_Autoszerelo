@@ -2,8 +2,14 @@
 using MechanicClient.DataProviders;
 using MechanicClient.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -17,7 +23,7 @@ namespace MechanicClient.ViewModels
         public ObservableCollection<Job> Jobs { get; set; }
         public Job GetSelectedJob()
         {
-            if (Jobs != null && JobSelected > -1)
+            if (Jobs != null && Jobs.Count > 0 && JobSelected > -1)
             {
                 return Jobs[JobSelected];
             }
@@ -38,7 +44,7 @@ namespace MechanicClient.ViewModels
             }
             catch (Exception e)
             {
-                if (DisplayConfirmActionMessageBox("Connection to the database failed! Do you want to retry?", "ERROR"))
+                if( DisplayConfirmActionMessageBox("Connection to the database failed! Do you want to retry?", "ERROR"))
                 {
                     UpdateViewCommand.Execute("AvailableJobsNew");
                 }
@@ -48,7 +54,7 @@ namespace MechanicClient.ViewModels
 
         public void SetSelectedJobStatus(string Status)
         {
-            if (Jobs != null && JobSelected > -1)
+            if (Jobs != null && Jobs.Count > 0 && JobSelected > -1)
             {
                 Jobs[JobSelected].Status = Status;
                 JobDataProvider.UpdateState(Jobs[JobSelected].Id, Status);
