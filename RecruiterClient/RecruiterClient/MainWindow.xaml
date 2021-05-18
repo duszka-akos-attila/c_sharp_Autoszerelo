@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecruiterClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Mechanic Recruiter Client"
+        MinHeight="500"
+        MinWidth="1000">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#FF228888">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="50" VerticalAlignment="Top" Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width ="60*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/RecruiterClient;component/Images/Office.png" Grid.Column="0" Width="30" Height="30"/>
+                <Label Content="Office" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Margin="0,50,0,0">
+                <Button Content="Recorded Jobs" Command="{Binding UpdateViewCommand}" CommandParameter="RecordedJobs" Height="35" Margin="10" Background="White" Foreground="#FF228888" FontSize="15" BorderBrush="{x:Null}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Background="White">
+            <ContentControl Content="{Binding SelectedViewModel}"/>
+        </Grid>
     </Grid>
 </Window>
+
