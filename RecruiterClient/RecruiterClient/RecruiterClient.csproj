@@ -58,6 +58,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\UpdateViewCommand.cs" />
+    <Compile Include="Models\DatabaseJob.cs" />
+    <Compile Include="Models\DatabaseJobList.cs" />
+    <Compile Include="ViewModels\JobViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\RecordedJobsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Job.xaml.cs">
       <DependentUpon>Job.xaml</DependentUpon>
     </Compile>
@@ -88,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Job.cs" />
-    <Compile Include="Models\JobList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

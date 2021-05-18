@@ -58,7 +58,7 @@
                     <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Job.ClientName, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Job.CarModel, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
                     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Job.LicensePlate, Mode=TwoWay}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Job.RegistrationDate, Mode=TwoWay, StringFormat='yyyy.MM.dd, HH:mm'}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Job.RegistrationDate, Mode=TwoWay, StringFormat='yyyy.MM.dd, HH:mm'}" Width="200" FontSize="14" Foreground="Black" HorizontalAlignment="Left" Margin="20,0,0,0" Padding="5" IsEnabled="False"/>
                     <ComboBox Grid.Row="4" Grid.Column="1" FontSize="14" HorizontalAlignment="Left" Margin="20,0,0,0" Width="130" Height="40" VerticalContentAlignment="Center" IsEnabled="False" SelectedIndex="{Binding }" IsReadOnly="true">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
