@@ -60,7 +60,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\EditJobCommand.cs" />
-    <Compile Include="Commands\SortItemsCommand.cs" />
     <Compile Include="Commands\UpdateJobStatusCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="DataProviders\JobDataProvider.cs" />
@@ -137,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

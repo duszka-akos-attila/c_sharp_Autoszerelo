@@ -1,12 +1,6 @@
 ﻿using MechanicClient.Commands;
 using MechanicClient.DataProviders;
 using MechanicClient.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -21,7 +15,6 @@ namespace MechanicClient.ViewModels
         public JobEditModeGui JobEditModeGui { get; }
         public Job Job { get; }
         public bool EditModeEnabled { get; set; }
-        public int StatusSelected { get; set; }
 
         public JobViewModel(MainViewModel mainViewModel, AvailableJobsViewModel availableJobsViewModel)
         {
@@ -30,9 +23,9 @@ namespace MechanicClient.ViewModels
             this.mainViewModel = mainViewModel;
             this.availableJobsViewModel = availableJobsViewModel;
             this.Job = availableJobsViewModel.GetSelectedJob();
-            SetStatusSelected();
             this.EditModeEnabled = false;
             this.JobEditModeGui = new JobEditModeGui();
+            SetStatusSelected();
         }
 
         public void ToggleJobEditModeGui()
@@ -53,15 +46,15 @@ namespace MechanicClient.ViewModels
         {
             if (Job.Status == "Registered")
             {
-                StatusSelected = 0;
+                JobEditModeGui.StatusSelected = 0;
             }
             else if (Job.Status == "Under Repair")
             {
-                StatusSelected = 1;
+                JobEditModeGui.StatusSelected = 1;
             }
             else if (Job.Status == "Repaired")
             {
-                StatusSelected = 2;
+                JobEditModeGui.StatusSelected = 2;
             }
         }
 
@@ -69,32 +62,32 @@ namespace MechanicClient.ViewModels
         {
             if (availableJobsViewModel.GetSelectedJob().Status == "Registered")
             {
-                StatusSelected = 0;
+                JobEditModeGui.StatusSelected = 0;
             }
             else if (availableJobsViewModel.GetSelectedJob().Status == "Under Repair")
             {
-                StatusSelected = 1;
+                JobEditModeGui.StatusSelected = 1;
             }
             else if (availableJobsViewModel.GetSelectedJob().Status == "Repaired")
             {
-                StatusSelected = 2;
+                JobEditModeGui.StatusSelected = 2;
             }
         }
         public void SaveStatusSelected()
         {
-            if (StatusSelected == 0)
+            if (JobEditModeGui.StatusSelected == 0)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Registered");
                 JobDataProvider.UpdateState(Job.Id, "Registered");
 
             }
-            else if (StatusSelected == 1)
+            else if (JobEditModeGui.StatusSelected == 1)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Under Repair");
                 JobDataProvider.UpdateState(Job.Id, "Under Repair");
 
             }
-            else if (StatusSelected == 2)
+            else if (JobEditModeGui.StatusSelected == 2)
             {
                 availableJobsViewModel.SetSelectedJobStatus("Repaired");
                 JobDataProvider.UpdateState(Job.Id, "Repaired");
@@ -109,19 +102,19 @@ namespace MechanicClient.ViewModels
 
         public bool IsJobChanged()
         {
-            if (StatusSelected == 0 && availableJobsViewModel.GetSelectedJob().Status == "Registered")
+            if (JobEditModeGui.StatusSelected == 0 && availableJobsViewModel.GetSelectedJob().Status == "Registered")
             {
                 return false;
             }
-            else if (StatusSelected == 1 && availableJobsViewModel.GetSelectedJob().Status == "Under Repair")
+            else if (JobEditModeGui.StatusSelected == 1 && availableJobsViewModel.GetSelectedJob().Status == "Under Repair")
             {
                 return false;
             }
-            else if (StatusSelected == 2 && availableJobsViewModel.GetSelectedJob().Status == "Repaired")
+            else if (JobEditModeGui.StatusSelected == 2 && availableJobsViewModel.GetSelectedJob().Status == "Repaired")
             {
                 return false;
             }
-            else if(StatusSelected < 0)
+            else if (JobEditModeGui.StatusSelected < 0)
             {
                 return false;
             }

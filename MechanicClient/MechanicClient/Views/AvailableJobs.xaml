@@ -7,55 +7,77 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ListView SelectedIndex="{Binding JobSelected}" ItemsSource="{Binding Jobs}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding ClientName}">
-                        <GridViewColumnHeader Command="{Binding SortItemsCommand}" CommandParameter="Date">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Client Name"/>
-                                <TextBlock Text="{Binding OrderByDateIcon}" Margin="10,0,0,0" Foreground="#FF225588"/>
-                            </StackPanel>
-                        </GridViewColumnHeader>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Car Model" DisplayMemberBinding="{Binding CarModel}"></GridViewColumn>
-                    <GridViewColumn Header="License Plate" DisplayMemberBinding="{Binding LicensePlate}"></GridViewColumn>
-                    <GridViewColumn Header="Registered" DisplayMemberBinding="{Binding RegistrationDate, StringFormat='yyyy.MM.dd. HH:mm'}"></GridViewColumn>
-                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"></GridViewColumn>
-                    <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Details" Command="{Binding UpdateViewCommand}" CommandParameter="Job">
-                        <MenuItem.Icon>
-                            <Image Source="/MechanicClient;component/Images/Details.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Set Status">
-                        <MenuItem.Icon>
-                            <Image Source="/MechanicClient;component/Images/Status.png"/>
-                        </MenuItem.Icon>
-                        <MenuItem Header="Registered" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Registered">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="100,0,100,100">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="#FF225588" BorderThickness="0,0,0,2">
+                <Grid>
+                    <Label Content="Available Jobs" FontSize="20" FontWeight="Bold" Foreground="#FF225588" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Button Command="{Binding UpdateViewCommand}" CommandParameter="AvailableJobsNew" Height="40" Width="100" HorizontalAlignment="Right" Margin="10,10,60,10" BorderThickness="0" Background="#FF225588" BorderBrush="{x:Null}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="/MechanicClient;component/Images/Refresh.png" Height="20"/>
+                        <Label Grid.Column="1" Content="Refresh" Foreground="White"/>
+                    </Grid>
+                </Button>
+            </Grid>
+
+            <ListView Grid.Row="2" SelectedIndex="{Binding JobSelected}" ItemsSource="{Binding Jobs}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Car Model" DisplayMemberBinding="{Binding ClientName}"></GridViewColumn>
+                        <GridViewColumn Header="Car Model" DisplayMemberBinding="{Binding CarModel}"></GridViewColumn>
+                        <GridViewColumn Header="License Plate" DisplayMemberBinding="{Binding LicensePlate}"></GridViewColumn>
+                        <GridViewColumn Header="Registered" DisplayMemberBinding="{Binding RegistrationDate, StringFormat='yyyy.MM.dd. HH:mm'}"></GridViewColumn>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"></GridViewColumn>
+                        <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Details" Command="{Binding UpdateViewCommand}" CommandParameter="Job">
                             <MenuItem.Icon>
-                                <Image Source="/MechanicClient;component/Images/Registered.png"/>
+                                <Image Source="/MechanicClient;component/Images/Details.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Under Repair" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Under Repair">
+                        <MenuItem Header="Set Status">
                             <MenuItem.Icon>
-                                <Image Source="/MechanicClient;component/Images/Repair.png"/>
+                                <Image Source="/MechanicClient;component/Images/Status.png"/>
+                            </MenuItem.Icon>
+                            <MenuItem Header="Registered" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Registered">
+                                <MenuItem.Icon>
+                                    <Image Source="/MechanicClient;component/Images/Registered.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Under Repair" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Under Repair">
+                                <MenuItem.Icon>
+                                    <Image Source="/MechanicClient;component/Images/Repair.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Repaired" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Repaired">
+                                <MenuItem.Icon>
+                                    <Image Source="/MechanicClient;component/Images/Repaired.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="Refresh" Command="{Binding UpdateViewCommand}" CommandParameter="AvailableJobsNew">
+                            <MenuItem.Icon>
+                                <Image Source="/MechanicClient;component/Images/Refresh.png"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Repaired" Command="{Binding UpdateJobStatusCommand}" CommandParameter="Repaired">
-                            <MenuItem.Icon>
-                                <Image Source="/MechanicClient;component/Images/Repaired.png"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="Sort" Command="{Binding SortItemsCommand}" CommandParameter="Date"/>
-                </ContextMenu>
-            </ListView.ContextMenu>
-        </ListView>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </Grid>
     </Grid>
 </UserControl>

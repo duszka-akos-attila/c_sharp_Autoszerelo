@@ -1,10 +1,5 @@
-﻿using MechanicClient.Models;
-using MechanicClient.ViewModels;
+﻿using MechanicClient.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MechanicClient.Commands
@@ -35,9 +30,9 @@ namespace MechanicClient.Commands
 
         public void Execute(object parameter)
         {
-            if(parameter.ToString() == "AvailableJobs")
+            if (parameter.ToString() == "AvailableJobs")
             {
-                if(availableJobsViewModel == null)
+                if (availableJobsViewModel == null)
                 {
                     mainViewModel.SelectedViewModel = new AvailableJobsViewModel(mainViewModel);
                 }
@@ -46,7 +41,11 @@ namespace MechanicClient.Commands
                     mainViewModel.SelectedViewModel = availableJobsViewModel;
                 }
             }
-            else if(parameter.ToString() == "Job")
+            else if (parameter.ToString() == "AvailableJobsNew")
+            {
+                mainViewModel.SelectedViewModel = new AvailableJobsViewModel(mainViewModel);
+            }
+            else if (parameter.ToString() == "Job")
             {
                 if (availableJobsViewModel.GetSelectedJob() != null)
                 {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace MechanicClient.Models
 {
@@ -12,6 +7,16 @@ namespace MechanicClient.Models
         public bool EditModeAvailable { get; set; }
         public bool EditModeEnabled { get; set; }
         public string EditButtonForeground { get; set; }
+        private int statusSelected;
+        public int StatusSelected
+        {
+            get { return statusSelected; }
+            set
+            {
+                statusSelected = value;
+                StatusPropertyHasChanged();
+            }
+        }
 
         public JobEditModeGui()
         {
@@ -26,8 +31,9 @@ namespace MechanicClient.Models
         {
             this.EditModeAvailable = !editModeEnabled;
             this.EditModeEnabled = editModeEnabled;
+            this.StatusSelected = 0;
 
-            if(editModeEnabled)
+            if (editModeEnabled)
             {
                 this.EditButtonForeground = "#BBBBBB";
             }
@@ -37,6 +43,7 @@ namespace MechanicClient.Models
             }
 
             PropertyHasChanged();
+            StatusPropertyHasChanged();
         }
 
         public void PropertyHasChanged()
@@ -44,6 +51,11 @@ namespace MechanicClient.Models
             PropertyChanged(this, new PropertyChangedEventArgs("EditModeAvailable"));
             PropertyChanged(this, new PropertyChangedEventArgs("EditModeEnabled"));
             PropertyChanged(this, new PropertyChangedEventArgs("EditButtonForeground"));
+        }
+
+        public void StatusPropertyHasChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("StatusSelected"));
         }
     }
 }

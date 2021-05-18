@@ -1,9 +1,5 @@
 ﻿using MechanicClient.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MechanicClient.Commands
@@ -26,7 +22,7 @@ namespace MechanicClient.Commands
 
         public void Execute(object parameter)
         {
-            if(parameter.ToString() == "Edit")
+            if (parameter.ToString() == "Edit")
             {
                 jobViewModel.ToggleJobEditModeGui();
 
@@ -62,7 +58,7 @@ namespace MechanicClient.Commands
                     jobViewModel.UpdateViewCommand.Execute("AvailableJobs");
                 }
             }
-            else if(parameter.ToString() == "SaveChanges")
+            else if (parameter.ToString() == "SaveChanges")
             {
                 jobViewModel.ToggleJobEditModeGui();
                 jobViewModel.SaveStatusSelected();
